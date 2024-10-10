@@ -1,9 +1,6 @@
-from os import write
-
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
 
-from .models import CustomUser
 
 User = get_user_model()
 
@@ -38,9 +35,3 @@ class LogOutSerializer(serializers.Serializer):
 
 class ResetPasswordSerializer(serializers.Serializer):
     email = serializers.EmailField(required=True)
-
-    def validate_email(self, email):
-        if not email:
-            raise serializers.ValidationError('Email field is required')
-        return email
-

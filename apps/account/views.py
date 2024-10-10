@@ -65,23 +65,3 @@ class LogOutView(APIView):
         token.blacklist()
         return Response('Успешно вышли с аккаунта', 200)
 
-
-class CustomResetPasswordView(APIView):
-    serializer_class = ResetPasswordSerializer
-
-    def post(self, request):
-        serializer = self.serializer_class(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        email = request.data.get('email')
-        user = User.objects.get(email=email)
-        user_id = user.id
-        if not user:
-            return Response({'ValidationError': 'Нет такого пользоателя'}, status=400)
-        send_password_reset_email(email=email, user_id=user_id)
-        return Response('Вам на почту отправлено сообщение с инструкцией по сбросу пароля', 200)
-
-        # try:
-        #     send_password_reset_email(email=email, user_id=user_id)
-        # except Exception as e:
-        #     print(e, '!!!!!!!!!!!!!!!!!!!!!!!!')
-        #     return Response('Во время отправки письма на почту возникла ошибка')
