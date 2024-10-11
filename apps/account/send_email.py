@@ -12,12 +12,11 @@ def send_activation_email(email, code):
     )
 
 
-def send_password_reset_email(email, user_id):
-    password_reset_url = f'http://localhost:8000/account/password_confirm/{user_id}'
+def send_password_reset_email(email, reset_code):
     send_mail(
         'Сброс пароля',
-        f'Чтобы восстановить пароль, нужно перейти по ссылке'
-        f'\n{password_reset_url}',
+        f'Чтобы восстановить пароль, нужно перейти на сайт и ввести код снизу'
+        f'\n{reset_code}',
         'ngrebnev17@gmail.com',
         [email],
         fail_silently=False

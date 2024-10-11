@@ -1,12 +1,10 @@
-from datetime import timedelta
-
-from django.contrib.auth import get_user_model
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.utils import timezone
+
+from datetime import timedelta
 
 import uuid
-
-from django.utils import timezone
 
 from apps.account.managers import MyUserManager
 
@@ -32,3 +30,10 @@ class CustomUser(AbstractUser):
         return self.email
 
 
+class UserResetPasswordToken(models.Model):
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    token = models.CharField(max_length=4)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def is_valid(self):
+        return self.created_at >= timezone.now() - timedelta(minutes=10)
