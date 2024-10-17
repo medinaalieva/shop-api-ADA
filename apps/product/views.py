@@ -1,27 +1,21 @@
-from rest_framework import generics
+from rest_framework.filters import SearchFilter
+from rest_framework.pagination import PageNumberPagination
+from rest_framework import permissions
+from rest_framework.decorators import action
+from rest_framework.viewsets import ModelViewSet
+
+from django_filters.rest_framework import DjangoFilterBackend
+
+from apps.rating.serializers import RatingSerializer
 
 from apps.product.models import Product
 from apps.product.serializers import ProductSerializer, ProductListSerializer
+from apps.product.permissions import IsOwnerOrAdmin, IsOwner
 
 
-class ProductCreateView(generics.CreateAPIView):
-    queryset = Product.objects.all()
-    serializer_class = ProductSerializer
-
-    def perform_create(self, serializer):
-        serializer.save(owner=self.request.user)
+class StandartResultPagination(PageNumberPagination):
+    page_size = 3
+    page_query_param = 'page'
 
 
-class ProductListView(generics.ListAPIView):
-    queryset = Product.objects.all()
-    serializer_class = ProductListSerializer
-
-
-class ProductDetailView(generics.RetrieveAPIView):
-    queryset = Product.objects.all()
-    serializer_class = ProductSerializer
-
-
-class ProductUpdateView(generics.UpdateAPIView):
-    queryset = Product.objects.all()
-    serializer_class = ProductSerializer
+class ProductViewSet(ModelViewSet)
