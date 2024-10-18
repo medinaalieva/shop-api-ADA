@@ -10,9 +10,11 @@ from django.shortcuts import get_object_or_404
 from django.contrib.auth import get_user_model
 
 from apps.account.models import UserResetPasswordToken
-from apps.account.send_email import send_activation_email, send_password_reset_email
-from apps.account.serializers import RegisterSerializer, LogOutSerializer, ResetPasswordSerializer, \
-    ResetPasswordConfirmSerializer
+from apps.account.serializers import (RegisterSerializer,
+                                      LogOutSerializer,
+                                      ResetPasswordSerializer,
+                                      ResetPasswordConfirmSerializer)
+from apps.account.tasks import send_activation_email_task, send_password_reset_email_task
 from apps.account.utils import generate_reset_password_code
 
 User = get_user_model()
@@ -28,7 +30,7 @@ class RegistrationView(APIView):
 
         if user:
             try:
-                send_activation_email(email=user.email, code=user.activation_code)
+                send_activation_email_task.delay(email=user.email, code=user.activation_code)
             except Exception as e:
                 print(e, '!!!!!!!!!!!!!!!!!!!!!!!!')
                 return Response(
@@ -84,7 +86,7 @@ class ResetPasswordView(APIView):
 
         reset_code = generate_reset_password_code()
         UserResetPasswordToken.objects.create(user=user, token=reset_code)
-        send_password_reset_email(email=email, reset_code=reset_code)
+        send_password_reset_email_task.delay(email=email, reset_code=reset_code)
         return Response('Вам на почту отправлено сообщение с инструкцией по сбросу пароля', 200)
 
 
