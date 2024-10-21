@@ -4,17 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c9c08492-2c64-4b33-b4bf-1d1691f0b21d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/apps/account/tasks.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/account/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/account/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/product/permissions.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/product/permissions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/product/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/product/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/product/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/product/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-    </list>
+    <list default="true" id="c9c08492-2c64-4b33-b4bf-1d1691f0b21d" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -48,7 +38,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-0e3be3396995-c546a90a8094-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-242.23339.19" />
+        <option value="bundled-python-sdk-98f27166c754-ba05f1cad1b1-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-242.21829.153" />
       </set>
     </attachedChunks>
   </component>
